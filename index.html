@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Download the AI Scribe Pilot Playbook — a practical guide for healthcare organizations moving from AI pilot to enterprise rollout." />
+  <title>AI Scribe Pilot Playbook — Chartnote</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== SITE NAV ===== -->
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+
+      <!-- Left: logo + dropdowns -->
+      <div class="nav-left">
+        <a href="https://chartnote.com" class="nav-logo" aria-label="Chartnote home">
+          <img src="chartnote logo 2026.png" alt="Chartnote" class="nav-logo__img" />
+        </a>
+
+        <nav class="nav-menus" aria-label="Main navigation">
+
+          <!-- Product dropdown -->
+          <div class="nav-dropdown-wrap" data-dropdown="product">
+            <button class="nav-menu-btn" aria-expanded="false" aria-haspopup="true">
+              <svg class="nav-menu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <rect x="2" y="1" width="9" height="11" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M5 4.5h5M5 7h5M5 9.5h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <rect x="5" y="10" width="9" height="4" rx="1" fill="currentColor" opacity="0.12"/>
+              </svg>
+              Product
+              <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="nav-dropdown" role="menu">
+              <a href="https://chartnote.com/aiScribe" class="nav-dropdown__item" role="menuitem">AI Scribe</a>
+              <a href="https://chartnote.com/copilot" class="nav-dropdown__item" role="menuitem">Copilot</a>
+              <a href="https://chartnote.com/voiceChart" class="nav-dropdown__item" role="menuitem">Voice Chart</a>
+              <a href="https://chartnote.com/dictation" class="nav-dropdown__item" role="menuitem">Dictation</a>
+            </div>
+          </div>
+
+          <!-- Features dropdown -->
+          <div class="nav-dropdown-wrap" data-dropdown="features">
+            <button class="nav-menu-btn" aria-expanded="false" aria-haspopup="true">
+              <svg class="nav-menu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 1.5l1.6 3.3 3.6.5-2.6 2.5.6 3.6L8 9.7l-3.2 1.7.6-3.6L2.8 5.3l3.6-.5L8 1.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+              </svg>
+              Features
+              <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="nav-dropdown" role="menu">
+              <a href="https://chartnote.com/snippets" class="nav-dropdown__item" role="menuitem">Snippets</a>
+              <a href="https://chartnote.com/aiScribe" class="nav-dropdown__item" role="menuitem">Smart Templates</a>
+              <a href="https://chartnote.com/dictation" class="nav-dropdown__item" role="menuitem">Voice Recognition</a>
+            </div>
+          </div>
+
+          <!-- Resources dropdown -->
+          <div class="nav-dropdown-wrap" data-dropdown="resources">
+            <button class="nav-menu-btn" aria-expanded="false" aria-haspopup="true">
+              <svg class="nav-menu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M5 5.5h6M5 8h6M5 10.5h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+              Resources
+              <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="nav-dropdown" role="menu">
+              <a href="https://blog.chartnote.com" class="nav-dropdown__item" role="menuitem">Blog</a>
+              <a href="https://help.chartnote.com" class="nav-dropdown__item" role="menuitem">Help Center</a>
+              <a href="https://chartnote.com/downloads" class="nav-dropdown__item" role="menuitem">Downloads</a>
+              <a href="https://chartnote.com/about" class="nav-dropdown__item" role="menuitem">About</a>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+
+      <!-- Right: utility links + CTA -->
+      <div class="nav-right">
+        <a href="https://chartnote.com/teams" class="nav-link">Teams</a>
+        <a href="https://chartnote.com/hipaa" class="nav-link">HIPAA</a>
+        <a href="https://chartnote.com/plans" class="nav-link">Pricing</a>
+
+        <button class="nav-globe" aria-label="Language selector">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.4"/>
+            <ellipse cx="9" cy="9" rx="3" ry="7.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M1.5 9h15M2.5 5.5h13M2.5 12.5h13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <a href="https://chartnote.com/login" class="nav-link nav-link--login">Login</a>
+        <a href="https://chartnote.com/signup" class="nav-cta-btn">Sign up for free</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <div class="container hero__inner">
+
+      <div class="hero__content">
+        <div class="hero__badge">White Paper</div>
+        <h1 class="hero__headline">AI Scribe<br>Pilot Playbook</h1>
+        <p class="hero__subheadline">How healthcare organizations turn AI pilots into enterprise rollout</p>
+        <p class="hero__support">Based on real-world implementations across clinical teams</p>
+      </div>
+
+      <div class="hero__form-area" id="form-area">
+
+        <!-- Lead form card -->
+        <div class="form-card" id="form-card">
+          <h2 class="form-card__title">Download the free guide</h2>
+
+          <form class="lead-form" id="lead-form" novalidate>
+
+            <div class="field" id="field-name">
+              <label for="name" class="field__label">
+                Full Name
+                <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="field__input"
+                placeholder="Dr. Jane Smith"
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-describedby="name-error"
+              />
+              <span class="field__error" id="name-error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="field" id="field-email">
+              <label for="email" class="field__label">
+                Work Email
+                <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="field__input"
+                placeholder="jane@healthsystem.org"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="email-error"
+              />
+              <span class="field__error" id="email-error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="field">
+              <label for="org" class="field__label">
+                Organization
+                <span class="optional">(optional)</span>
+              </label>
+              <input
+                type="text"
+                id="org"
+                name="org"
+                class="field__input"
+                placeholder="General Hospital"
+                autocomplete="organization"
+              />
+            </div>
+
+            <button type="submit" class="btn btn--primary" id="submit-btn">
+              Download the Playbook
+            </button>
+
+            <p class="form-trust">Free guide &middot; No commitment</p>
+          </form>
+        </div>
+
+        <!-- Thank-you card (hidden until submission) -->
+        <div class="thankyou-card hidden" id="thankyou-card" role="alert" aria-live="polite">
+          <div class="thankyou__check" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="24" fill="#E8F2FF"/>
+              <path d="M14 24.5L20.5 31L34 18" stroke="#2B78E4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="thankyou__title">Your playbook is on the way</h2>
+          <p class="thankyou__body">
+            We've sent the AI Scribe Pilot Playbook to your email. If you're exploring a pilot for your organization, we're happy to share what we've seen work best across clinical teams.
+          </p>
+          <a href="https://calendly.com/chartnote/15" target="_blank" rel="noopener noreferrer" class="btn btn--secondary-blue" id="schedule-btn">
+            Schedule a quick intro call
+          </a>
+        </div>
+
+      </div><!-- /hero__form-area -->
+    </div><!-- /container -->
+  </section>
+
+  <!-- ===== VALUE: What you'll learn ===== -->
+  <section class="section section--light" aria-labelledby="value-heading">
+    <div class="container">
+      <h2 class="section__title" id="value-heading">What you'll learn</h2>
+      <ul class="value-list" role="list">
+        <li class="value-item">
+          <span class="value-item__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="11" fill="#E8F2FF"/>
+              <path d="M6.5 11.5L9.5 14.5L15.5 8.5" stroke="#2B78E4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Structure a successful AI scribe pilot</span>
+        </li>
+        <li class="value-item">
+          <span class="value-item__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="11" fill="#E8F2FF"/>
+              <path d="M6.5 11.5L9.5 14.5L15.5 8.5" stroke="#2B78E4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Drive clinician adoption from day one</span>
+        </li>
+        <li class="value-item">
+          <span class="value-item__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="11" fill="#E8F2FF"/>
+              <path d="M6.5 11.5L9.5 14.5L15.5 8.5" stroke="#2B78E4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Identify physician champions</span>
+        </li>
+        <li class="value-item">
+          <span class="value-item__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="11" fill="#E8F2FF"/>
+              <path d="M6.5 11.5L9.5 14.5L15.5 8.5" stroke="#2B78E4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Measure real impact and ROI</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== INSIGHT: Why most AI pilots stall ===== -->
+  <section class="section section--white" aria-labelledby="insight-heading">
+    <div class="container container--narrow">
+      <h2 class="section__title" id="insight-heading">Why most AI pilots stall</h2>
+      <p class="insight__body">
+        Most AI scribe pilots don't fail because the technology doesn't work.
+        They stall because clinicians never fully adopt it.
+        This playbook outlines a practical approach to accelerate onboarding,
+        build clinician confidence, and drive real, measurable impact.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== OUTCOMES ===== -->
+  <section class="section section--light" aria-labelledby="outcomes-heading">
+    <div class="container">
+      <h2 class="section__title" id="outcomes-heading">What successful pilots achieve</h2>
+      <div class="outcomes-grid" role="list">
+        <div class="outcome-card" role="listitem">
+          <p class="outcome-card__stat">+70%</p>
+          <p class="outcome-card__label">save time daily</p>
+        </div>
+        <div class="outcome-card" role="listitem">
+          <p class="outcome-card__stat">+70%</p>
+          <p class="outcome-card__label">report less burnout</p>
+        </div>
+        <div class="outcome-card" role="listitem">
+          <p class="outcome-card__stat">90%</p>
+          <p class="outcome-card__label">want to continue</p>
+        </div>
+      </div>
+      <p class="outcomes__attribution">Based on real pilot program outcomes</p>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="section section--blue" aria-labelledby="cta-heading">
+    <div class="container container--narrow container--center">
+      <h2 class="section__title section__title--white" id="cta-heading">
+        Ready to run a successful AI scribe pilot?
+      </h2>
+      <p class="cta__body">
+        Download the step-by-step playbook used by healthcare organizations
+        to move from pilot to scale.
+      </p>
+      <a href="#top" class="btn btn--white" id="cta-scroll-btn">
+        Download the AI Scribe Pilot Playbook
+      </a>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>
