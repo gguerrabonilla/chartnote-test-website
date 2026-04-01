@@ -1,3 +1,4 @@
-"temporary screenshots/"
 node_modules/
+temporary screenshots/
 .DS_Store
+package-lock.json

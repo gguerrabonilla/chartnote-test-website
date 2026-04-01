@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Request a Chartnote enterprise demo. See how AI-powered medical documentation reduces physician burnout and integrates with your EHR." />
+  <title>Request a Demo — Chartnote Enterprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Design Tokens ─────────────────────────────── */
+    :root {
+      --c1: #799AF1;
+      --c2: #4C6CBF;
+      --c3: #BBCBF7;
+      --c4: #E8EEFC;
+      --navy: #293683;
+      --n1: #FFFFFF;
+      --n2: #FAFAFA;
+      --n3: #E0E0E0;
+      --n4: #999999;
+      --n5: #242424;
+      --radius: 5px;
+      --radius-pill: 24px;
+      --shadow-card: rgba(0,0,0,0.10) 0px 4px 16px 0px;
+      --shadow-sm: rgba(0,0,0,0.25) 0px 2px 2px 0px;
+    }
+
+    /* ─── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      line-height: 1.375;
+      color: var(--n5);
+      background: var(--n1);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* ─── Nav ───────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--n3);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--n5);
+      opacity: 0.75;
+      transition: opacity 0.15s ease;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 20px;
+      background: var(--c1);
+      color: var(--n5);
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--c2); }
+
+    /* ─── Hero ──────────────────────────────────────── */
+    .hero {
+      min-height: calc(100vh - 64px);
+      background:
+        radial-gradient(ellipse 60% 70% at 15% 60%, rgba(208,188,248,0.55) 0%, rgba(255,255,255,0) 100%),
+        radial-gradient(ellipse 55% 65% at 85% 30%, rgb(187,203,247) 0%, rgba(255,255,255,0) 100%),
+        #ffffff;
+      display: flex;
+      align-items: center;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Left column */
+    .hero-left { padding-top: 24px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--c2);
+      background: var(--c4);
+      border: 1px solid var(--c3);
+      border-radius: var(--radius-pill);
+      padding: 4px 12px;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--c1);
+    }
+    .hero-h1 {
+      font-size: 52px;
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--n5);
+      margin-bottom: 20px;
+    }
+    .hero-h1 span { color: var(--c1); }
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--n4);
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .hero-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .hero-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--n5);
+      line-height: 1.5;
+    }
+    .check-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--c4);
+      border: 1.5px solid var(--c3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .check-icon svg { display: block; }
+
+    /* Trust strip */
+    .trust-strip {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .trust-label {
+      font-size: 13px;
+      color: var(--n4);
+      font-weight: 400;
+    }
+    .trust-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--n4);
+      border: 1px solid var(--n3);
+      border-radius: var(--radius);
+      padding: 4px 10px;
+      background: var(--n1);
+    }
+    .trust-badge svg { opacity: 0.6; }
+
+    /* Right column — form card */
+    .hero-right {}
+    .form-card {
+      background: var(--n1);
+      border: 1px solid var(--n3);
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: var(--shadow-card);
+    }
+    .form-card-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--n5);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .form-card-sub {
+      font-size: 14px;
+      color: var(--n4);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--n5);
+    }
+    .form-label .req {
+      color: var(--c1);
+      margin-left: 2px;
+    }
+    .form-input,
+    .form-select {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--n5);
+      background: var(--n1);
+      border: 1px solid var(--n3);
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color 0.15s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-input::placeholder { color: var(--n4); }
+    .form-input:focus,
+    .form-select:focus { border-color: var(--c1); }
+    .form-select-wrap {
+      position: relative;
+    }
+    .form-select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--n4);
+      pointer-events: none;
+    }
+    .form-select { cursor: pointer; padding-right: 36px; }
+    .form-submit {
+      width: 100%;
+      height: 52px;
+      margin-top: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--n5);
+      background: var(--c1);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.1s ease;
+      letter-spacing: 0.01em;
+    }
+    .form-submit:hover { background: var(--c2); }
+    .form-submit:active { transform: scale(0.99); }
+    .form-fine {
+      font-size: 12px;
+      color: var(--n4);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+    .form-fine a { color: var(--c1); text-decoration: underline; }
+
+    /* ─── Social Proof / Logo Bar ───────────────────── */
+    .logos-section {
+      padding: 64px 32px;
+      border-top: 1px solid var(--n3);
+      background: var(--n2);
+    }
+    .logos-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logos-label {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--n4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+    }
+    .logos-track-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .logos-track-wrap::before,
+    .logos-track-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .logos-track-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--n2), transparent);
+    }
+    .logos-track-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--n2), transparent);
+    }
+    .logos-track {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      animation: scroll-logos 28s linear infinite;
+      width: max-content;
+    }
+    .logos-track:hover { animation-play-state: paused; }
+    @keyframes scroll-logos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .logo-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--n4);
+      white-space: nowrap;
+      opacity: 0.7;
+      padding: 8px 16px;
+      border: 1px solid var(--n3);
+      border-radius: var(--radius);
+      background: var(--n1);
+      box-shadow: var(--shadow-sm);
+    }
+    .logo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--c3);
+    }
+
+    /* ─── Why Chartnote Strip ───────────────────────── */
+    .why-section {
+      padding: 80px 32px;
+      background: var(--n1);
+      border-top: 1px solid var(--n3);
+    }
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .why-label {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--c1);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .why-h2 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 500;
+      color: var(--n5);
+      line-height: 1.2;
+      margin-bottom: 56px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      background: var(--n2);
+      border: 1px solid var(--c3);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .why-card:hover {
+      transform: translateY(-2px);
+      box-shadow: rgba(121,154,241,0.15) 0px 8px 24px 0px;
+    }
+    .why-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--c4);
+      border: 1px solid var(--c3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .why-card-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--n5);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .why-card-body {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--n4);
+      line-height: 1.6;
+    }
+
+    /* ─── Stat Bar ──────────────────────────────────── */
+    .stats-section {
+      background: var(--navy);
+      padding: 56px 32px;
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      gap: 0;
+      text-align: center;
+      align-items: center;
+    }
+    .stat-number {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--c1);
+      line-height: 1;
+      margin-bottom: 8px;
+      padding: 0 48px;
+    }
+    .stat-label {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+      padding: 0 48px;
+    }
+    .stat-divider {
+      width: 1px;
+      height: 60px;
+      background: rgba(255,255,255,0.2);
+      justify-self: center;
+    }
+
+    /* ─── Footer ────────────────────────────────────── */
+    .footer {
+      background: var(--n5);
+      padding: 40px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo img {
+      height: 28px;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+    .footer-compliance {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .compliance-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      padding: 5px 10px;
+    }
+    .compliance-badge svg { opacity: 0.6; }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.15s ease;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── Exit-Intent Modal ─────────────────────────── */
+    .ei-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 20, 40, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .ei-overlay.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .ei-modal {
+      background: var(--n1);
+      border-radius: 12px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      overflow: hidden;
+      max-width: 620px;
+      width: calc(100% - 48px);
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.25s ease;
+    }
+    .ei-overlay.visible .ei-modal {
+      transform: translateY(0) scale(1);
+    }
+    .ei-cover {
+      background:
+        radial-gradient(ellipse 80% 80% at 20% 80%, rgba(208,188,248,0.7) 0%, transparent 100%),
+        radial-gradient(ellipse 70% 70% at 80% 20%, rgb(187,203,247) 0%, transparent 100%),
+        var(--c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+    }
+    .ei-cover-inner {
+      background: var(--n1);
+      border-radius: 8px;
+      padding: 20px 16px;
+      box-shadow: 0 8px 32px rgba(121,154,241,0.25);
+      text-align: center;
+      width: 100%;
+    }
+    .ei-cover-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--c1);
+      margin-bottom: 10px;
+    }
+    .ei-cover-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--n5);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .ei-cover-sub {
+      font-size: 11px;
+      color: var(--n4);
+      line-height: 1.4;
+    }
+    .ei-cover-bar {
+      margin-top: 14px;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(to right, var(--c1), var(--c3));
+    }
+    .ei-body {
+      padding: 36px 32px 32px;
+      position: relative;
+    }
+    .ei-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--n4);
+      border-radius: 4px;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .ei-close:hover { color: var(--n5); background: var(--n3); }
+    .ei-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--c2);
+      background: var(--c4);
+      border: 1px solid var(--c3);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .ei-heading {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--n5);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .ei-desc {
+      font-size: 14px;
+      color: var(--n4);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .ei-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      justify-content: center;
+      padding: 14px 24px;
+      background: var(--c1);
+      color: var(--n5);
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+    .ei-btn:hover { background: var(--c2); }
+    .ei-dismiss {
+      display: block;
+      text-align: center;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--n4);
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+    .ei-dismiss:hover { color: var(--n5); }
+
+    /* ─── Responsive ────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 48px 24px;
+      }
+      .hero-left { padding-top: 0; }
+      .hero-h1 { font-size: 38px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr; gap: 32px; }
+      .stats-inner .stat-divider { display: none; }
+      .stat-number, .stat-label { padding: 0; }
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="https://chartnote.com" class="nav-logo" aria-label="Chartnote home">
+        <img src="chartnote logo 2026.png" alt="Chartnote" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="https://chartnote.com/aiScribe">AI Scribe</a></li>
+        <li><a href="https://chartnote.com/copilot">Copilot</a></li>
+        <li><a href="https://chartnote.com/hipaa">HIPAA</a></li>
+        <li><a href="https://chartnote.com/plans">Pricing</a></li>
+      </ul>
+      <a href="https://chartnote.com/welcome?mode=signup" class="nav-cta">Sign up for free</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <!-- Left: value props -->
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Enterprise &amp; Health Systems
+        </div>
+        <h1 class="hero-h1">
+          Find out what<br/>
+          <span>Chartnote</span> can do<br/>
+          for your organization.
+        </h1>
+        <p class="hero-sub">
+          Meet one-on-one with a Chartnote expert to explore how AI documentation fits your EHR, your specialty, and your team.
+        </p>
+        <ul class="hero-bullets">
+          <li>
+            <span class="check-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6l3 3 5-5" stroke="#799AF1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Assess your organization's documentation challenges
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6l3 3 5-5" stroke="#799AF1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Explore AI scribe capabilities and EHR integrations
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6l3 3 5-5" stroke="#799AF1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Build a rollout plan tailored to your team size and specialty
+          </li>
+          <li>
+            <span class="check-icon">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6l3 3 5-5" stroke="#799AF1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Review security, HIPAA compliance, and implementation support
+          </li>
+        </ul>
+
+        <div class="trust-strip">
+          <span class="trust-label">Certified &amp; compliant</span>
+          <div class="trust-badges">
+            <div class="trust-badge">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 1L2 3.5v4c0 2.8 2.1 5.4 5 6 2.9-.6 5-3.2 5-6v-4L7 1z" stroke="#999" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M4.5 7l2 2 3-3" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              HIPAA
+            </div>
+            <div class="trust-badge">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <rect x="2" y="2" width="10" height="10" rx="2" stroke="#999" stroke-width="1.3"/>
+                <path d="M4.5 7l2 2 3-3" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              SOC 2
+            </div>
+            <div class="trust-badge">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="5" stroke="#999" stroke-width="1.3"/>
+                <path d="M5 7h4M7 5v4" stroke="#999" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+              BAA available
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="hero-right">
+        <div class="form-card">
+          <h2 class="form-card-title">Request a demo</h2>
+          <p class="form-card-sub">We'll reach out within 1 business day to schedule your session.</p>
+
+          <form id="demo-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fname">First name <span class="req">*</span></label>
+                <input class="form-input" id="fname" type="text" name="fname" placeholder="Jane" autocomplete="given-name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lname">Last name <span class="req">*</span></label>
+                <input class="form-input" id="lname" type="text" name="lname" placeholder="Smith" autocomplete="family-name" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Work email <span class="req">*</span></label>
+              <input class="form-input" id="email" type="email" name="email" placeholder="jane@healthsystem.org" autocomplete="email" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="org">Organization name <span class="req">*</span></label>
+              <input class="form-input" id="org" type="text" name="org" placeholder="General Hospital" autocomplete="organization" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="role">Your role <span class="req">*</span></label>
+                <div class="form-select-wrap">
+                  <select class="form-select" id="role" name="role" required>
+                    <option value="" disabled selected>Select role</option>
+                    <option>Physician (MD/DO)</option>
+                    <option>Nurse Practitioner / PA</option>
+                    <option>Practice Manager</option>
+                    <option>IT / Health Informatics</option>
+                    <option>CMO / CMIO</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ehr">EHR system</label>
+                <div class="form-select-wrap">
+                  <select class="form-select" id="ehr" name="ehr">
+                    <option value="" disabled selected>Select EHR</option>
+                    <option>AdvancedMD</option>
+                    <option>Allscripts / Veradigm</option>
+                    <option>Athenahealth</option>
+                    <option>Cerner</option>
+                    <option>DrChrono</option>
+                    <option>eClinicalWorks</option>
+                    <option>Epic</option>
+                    <option>Greenway Health</option>
+                    <option>MatrixCare</option>
+                    <option>Meditech</option>
+                    <option>ModMed</option>
+                    <option>Netsmart</option>
+                    <option>NextGen</option>
+                    <option>OSCAR</option>
+                    <option>OpenEMR</option>
+                    <option>PointClickCare</option>
+                    <option>Practice Fusion</option>
+                    <option>RXNT</option>
+                    <option>SimplePractice</option>
+                    <option>TELUS Health</option>
+                    <option>Tebra (Kareo)</option>
+                    <option>TherapyNotes</option>
+                    <option>Valant</option>
+                    <option>Veradigm (Allscripts)</option>
+                    <option>WellSky</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="size">Team size <span class="req">*</span></label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="size" name="size" required>
+                  <option value="" disabled selected>Number of clinicians</option>
+                  <option>1 – 10</option>
+                  <option>11 – 50</option>
+                  <option>51 – 200</option>
+                  <option>200 – 500</option>
+                  <option>500+</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="form-submit">Request my demo →</button>
+          </form>
+
+          <p class="form-fine">
+            By submitting you agree to our
+            <a href="https://chartnote.com/termsOfUse">Terms</a> and
+            <a href="https://chartnote.com/privacyPolicy">Privacy Policy</a>.
+            We never sell your data.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== LOGO CAROUSEL ===== -->
+  <section class="logos-section">
+    <div class="logos-inner">
+      <p class="logos-label">Trusted by clinicians at leading health systems</p>
+      <div class="logos-track-wrap">
+        <div class="logos-track" id="logos-track">
+          <div class="logo-item"><span class="logo-dot"></span>Baptist Health Care</div>
+          <div class="logo-item"><span class="logo-dot"></span>i-Health</div>
+          <div class="logo-item"><span class="logo-dot"></span>Indiana Healthcare</div>
+          <div class="logo-item"><span class="logo-dot"></span>Ridgecrest Regional Hospital</div>
+          <div class="logo-item"><span class="logo-dot"></span>Fountain Life</div>
+          <div class="logo-item"><span class="logo-dot"></span>Gastroenterology of the Rockies</div>
+          <div class="logo-item"><span class="logo-dot"></span>El Dorado Community Health Centers</div>
+          <div class="logo-item"><span class="logo-dot"></span>Aroga Lifestyle Medicine</div>
+          <div class="logo-item"><span class="logo-dot"></span>Vynca Care</div>
+          <div class="logo-item"><span class="logo-dot"></span>Well Diagnostics</div>
+          <!-- duplicated for seamless loop -->
+          <div class="logo-item"><span class="logo-dot"></span>Baptist Health Care</div>
+          <div class="logo-item"><span class="logo-dot"></span>i-Health</div>
+          <div class="logo-item"><span class="logo-dot"></span>Indiana Healthcare</div>
+          <div class="logo-item"><span class="logo-dot"></span>Ridgecrest Regional Hospital</div>
+          <div class="logo-item"><span class="logo-dot"></span>Fountain Life</div>
+          <div class="logo-item"><span class="logo-dot"></span>Gastroenterology of the Rockies</div>
+          <div class="logo-item"><span class="logo-dot"></span>El Dorado Community Health Centers</div>
+          <div class="logo-item"><span class="logo-dot"></span>Aroga Lifestyle Medicine</div>
+          <div class="logo-item"><span class="logo-dot"></span>Vynca Care</div>
+          <div class="logo-item"><span class="logo-dot"></span>Well Diagnostics</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY CHARTNOTE ===== -->
+  <section class="why-section">
+    <div class="why-inner">
+      <p class="why-label">✦ Why Chartnote</p>
+      <h2 class="why-h2">Built for enterprise healthcare</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="3" y="2" width="13" height="16" rx="2" stroke="#799AF1" stroke-width="1.5"/>
+              <path d="M7 7h5M7 10.5h5M7 14h3" stroke="#799AF1" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="17" cy="16" r="3.5" fill="#E8EEFC" stroke="#799AF1" stroke-width="1.3"/>
+              <path d="M15.5 16l1 1 2-2" stroke="#799AF1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="why-card-title">Ambient AI documentation</h3>
+          <p class="why-card-body">Chartnote listens to the patient encounter and generates a structured note in seconds — no typing, no templates, no post-visit cleanup.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="2" y="5" width="18" height="12" rx="2" stroke="#799AF1" stroke-width="1.5"/>
+              <path d="M7 11h8M11 8v6" stroke="#799AF1" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="why-card-title">Deep EHR integration</h3>
+          <p class="why-card-body">Push notes directly into any web-based EHR. No copy-paste, no dual documentation. Works inside your existing workflow.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M11 2L4 5.5v6c0 4.4 3.2 8.5 7 9.5 3.8-1 7-5.1 7-9.5v-6L11 2z" stroke="#799AF1" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M8 11l2.5 2.5 4-4" stroke="#799AF1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="why-card-title">HIPAA-ready from day one</h3>
+          <p class="why-card-body">BAA available, SOC 2 certified, end-to-end encryption. Security documentation and IT review support included with every enterprise plan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats-section">
+    <div class="stats-inner">
+      <div>
+        <div class="stat-number">2+ hrs</div>
+        <div class="stat-label">saved per clinician,<br>per day</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div>
+        <div class="stat-number">5000+</div>
+        <div class="stat-label">clinicians across<br>health systems</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div>
+        <div class="stat-number">4.9 ★</div>
+        <div class="stat-label">average rating across<br>app stores</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="https://chartnote.com" class="footer-logo">
+        <img src="chartnote logo 2026.png" alt="Chartnote" />
+      </a>
+      <div class="footer-compliance">
+        <div class="compliance-badge">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1L2 3v4c0 2.4 1.8 4.6 4 5 2.2-.4 4-2.6 4-5V3L6 1z" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linejoin="round"/>
+          </svg>
+          HIPAA Compliant
+        </div>
+        <div class="compliance-badge">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <rect x="1.5" y="1.5" width="9" height="9" rx="1.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+          </svg>
+          SOC 2 Type II
+        </div>
+        <div class="compliance-badge">
+          BAA Available
+        </div>
+      </div>
+      <nav class="footer-links">
+        <a href="https://chartnote.com/termsOfUse">Terms</a>
+        <a href="https://chartnote.com/privacyPolicy">Privacy</a>
+        <a href="https://help.chartnote.com">Help</a>
+      </nav>
+      <span class="footer-copy">© 2026 Chartnote, Inc.</span>
+    </div>
+  </footer>
+
+  <!-- ===== EXIT-INTENT MODAL ===== -->
+  <div class="ei-overlay" id="ei-overlay" role="dialog" aria-modal="true" aria-label="Download whitepaper">
+    <div class="ei-modal">
+      <!-- Left: cover art -->
+      <div class="ei-cover">
+        <div class="ei-cover-inner">
+          <div class="ei-cover-eyebrow">Free Whitepaper</div>
+          <div class="ei-cover-title">AI Scribe<br>Pilot Playbook</div>
+          <div class="ei-cover-sub">How healthcare organizations turn AI pilots into enterprise rollout</div>
+          <div class="ei-cover-bar"></div>
+        </div>
+      </div>
+      <!-- Right: CTA -->
+      <div class="ei-body">
+        <button class="ei-close" id="ei-close" aria-label="Close">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="ei-tag">✦ Free download</div>
+        <h2 class="ei-heading">Before you go —<br>grab the playbook.</h2>
+        <p class="ei-desc">Learn how health systems move from AI scribe pilot to enterprise rollout. Real strategies, real results.</p>
+        <a href="https://leads.chartnote.com" target="_blank" class="ei-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 13h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          Download free playbook
+        </a>
+        <span class="ei-dismiss" id="ei-dismiss">No thanks, I'll pass</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Exit-intent modal ──────────────────────────────
+    (function() {
+      const overlay  = document.getElementById('ei-overlay');
+      const closeBtn = document.getElementById('ei-close');
+      const dismiss  = document.getElementById('ei-dismiss');
+      let shown = sessionStorage.getItem('ei_shown');
+
+      function show() {
+        if (shown) return;
+        shown = true;
+        sessionStorage.setItem('ei_shown', '1');
+        overlay.classList.add('visible');
+      }
+      function hide() {
+        overlay.classList.remove('visible');
+      }
+
+      // Trigger when cursor moves to top 20px of viewport (heading for address bar / tab bar)
+      let armed = false;
+      setTimeout(function() { armed = true; }, 2000); // wait 2s before arming
+      document.addEventListener('mousemove', function(e) {
+        if (armed && e.clientY < 20) show();
+      });
+      // Also catch the actual document leave event as fallback
+      document.addEventListener('mouseleave', function(e) {
+        if (armed && e.clientY <= 0) show();
+      });
+
+      closeBtn.addEventListener('click', hide);
+      dismiss.addEventListener('click', hide);
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) hide();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') hide();
+      });
+    })();
+
+    // ── Demo form submission ───────────────────────────
+    document.getElementById('demo-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.form-submit');
+      const original = btn.textContent;
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      const data = {
+        first_name:  this.fname.value.trim(),
+        last_name:   this.lname.value.trim(),
+        email:       this.email.value.trim(),
+        organization: this.org.value.trim(),
+        role:        this.role.value,
+        ehr:         this.ehr.value,
+        team_size:   this.size.value,
+      };
+
+      try {
+        await fetch('https://hooks.zapier.com/hooks/catch/9771176/unqdgvs/', {
+          method: 'POST',
+          body: JSON.stringify(data),
+        });
+        btn.textContent = 'Submitted! We\'ll be in touch.';
+        btn.style.background = '#4C6CBF';
+      } catch (err) {
+        btn.textContent = original;
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    });
+  </script>
+
+</body>
+</html>
