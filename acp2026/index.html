@@ -564,16 +564,15 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting…';
 
-    // ── Wire up your backend here ──────────────────────────────────
-    // Example: await fetch('/api/leads', { method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ name: nameInput.value.trim(),
-    //                          email: emailInput.value.trim(),
-    //                          source: 'acp2026' }) });
-    // ─────────────────────────────────────────────────────────────
-
-    // Simulate a brief network delay for UX polish
-    await new Promise(r => setTimeout(r, 600));
+    await fetch('https://hooks.zapier.com/hooks/catch/9771176/u7noid3/', {
+      method: 'POST',
+      body: JSON.stringify({
+        name:   nameInput.value.trim(),
+        email:  emailInput.value.trim(),
+        source: 'acp2026',
+        ts:     new Date().toISOString(),
+      }),
+    });
 
     formSection.style.display = 'none';
     successState.classList.add('visible');
