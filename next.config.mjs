@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: "/demo", destination: "/demo/index.html" },
+        { source: "/acp2026", destination: "/acp2026/index.html" },
+        { source: "/playbook", destination: "/playbook/index.html" },
+      ],
+    };
+  },
   async redirects() {
     return [
       { source: "/contact", destination: "/", permanent: false },
