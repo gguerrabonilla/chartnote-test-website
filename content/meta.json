@@ -1,0 +1,92 @@
+{
+  "home": {
+    "title": "Chartnote | AI Scribe & Clinical Documentation Platform for Medical Teams",
+    "meta": "Chartnote delivers AI-powered medical scribing and automated clinical documentation for healthcare teams across all specialties — internal medicine, family medicine, emergency medicine, psychiatry, cardiology, pediatrics, orthopedics, neurology, OB/GYN, and oncology.",
+    "path": "/"
+  },
+  "about": {
+    "title": "About us | Chartnote",
+    "meta": "Discover how Chartnote is revolutionizing medical documentation. Empower clinicians to focus on patient care, reduce burnout, and bring back the joy of practicing medicine.",
+    "path": "/about"
+  },
+  "aiScribe": {
+    "title": "Chartnote | AI Scribe Chart",
+    "meta": "Streamline medical documentation with Chartnote AI Scribe. Transcribe patient visits into clinical notes using AI. HIPAA-compliant, fast, and efficient—focus on patient care, not paperwork.",
+    "path": "/aiScribe"
+  },
+  "baa": {
+    "title": "Business Associate Agreement | Chartnote",
+    "meta": "Chartnote Business Associate Agreement (BAA) - Secure and Compliant Partnership",
+    "path": "/baa"
+  },
+  "copilot": {
+    "title": "Copilot | Chartnote",
+    "meta": "Enhance your medical practice with Chartnote Copilot. Automate notes, summaries, and patient communications using AI. Confidential, efficient, and context-aware assistance.",
+    "path": "/copilot"
+  },
+  "dictation": {
+    "title": "Dictation | Chartnote",
+    "meta": "Create precise medical notes effortlessly with Chartnote Dictation. Transform speech into text, seamlessly integrate with EHRs, and dictate on the go. Boost efficiency today.",
+    "path": "/dictation"
+  },
+  "downloads": {
+    "title": "Downloads | Chartnote",
+    "meta": "Download the Chartnote Chrome extension and mobile apps. Dictate, craft notes, and sync your devices for seamless medical documentation on the go.",
+    "path": "/downloads"
+  },
+  "fairUse": {
+    "title": "Fair Use & Account Policy | Chartnote",
+    "meta": "Chartnote Fair Use & Account Policy - how accounts may be used and what \"unlimited\" means in practice",
+    "path": "/fairUse"
+  },
+  "faq": {
+    "title": "FAQ | Chartnote",
+    "meta": "Find answers to frequently asked questions about Chartnote, including pricing, security, integrations, and getting started.",
+    "path": "/faq"
+  },
+  "hipaa": {
+    "title": "HIPAA | Chartnote",
+    "meta": "Ensure your healthcare data is secure with Chartnote. Our platform is fully HIPAA compliant, safeguarding patient information and streamlining clinical documentation for healthcare professionals.",
+    "path": "/hipaa"
+  },
+  "msa": {
+    "title": "Master Subscription Agreement | Chartnote",
+    "meta": "Chartnote Master Subscription Agreement",
+    "path": "/msa"
+  },
+  "plans": {
+    "title": "Chartnote | AI Scribe, Medical Dictation, Snippets",
+    "meta": "Expedite medical documentation using generative AI, voice recognition, and smart templates. With Chartnote AI Scribe your notes write themselves.",
+    "path": "/plans"
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy | Chartnote",
+    "meta": "Learn how Chartnote collects, uses, and protects your data. Our Privacy Policy details our commitment to safeguarding your personal information and ensuring compliance.",
+    "path": "/privacyPolicy"
+  },
+  "security": {
+    "title": "Chartnote | AI Scribe Chart",
+    "meta": "Streamline medical documentation with Chartnote AI Scribe. Transcribe patient visits into clinical notes using AI. HIPAA-compliant, fast, and efficient—focus on patient care, not paperwork.",
+    "path": "/security"
+  },
+  "snippets": {
+    "title": "Snippets | Chartnote",
+    "meta": "Streamline medical documentation with Chartnote Snippets. Customize and expand frequently used text with ease, reducing typing time and enhancing productivity.",
+    "path": "/snippets"
+  },
+  "teams": {
+    "title": "Chartnote | for Teams",
+    "meta": "AI-driven healthcare documentation that delivers.",
+    "path": "/teams"
+  },
+  "termsOfUse": {
+    "title": "Terms of Use | Chartnote",
+    "meta": "Read the Terms of Use for Chartnote. Understand your rights and obligations when using our medical documentation platform and associated services.",
+    "path": "/termsOfUse"
+  },
+  "voiceChart": {
+    "title": "Chartnote | Voice Chart",
+    "meta": "Transform dictations into accurate, structured clinical notes with Chartnote's AI-powered Voice Chart. Fast, secure, and HIPAA-compliant—perfect for busy healthcare professionals.",
+    "path": "/voiceChart"
+  }
+}

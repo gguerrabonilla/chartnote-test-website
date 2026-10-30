@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/helvetica-neue/HelveticaNeueCyr-Light.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/helvetica-neue/HelveticaNeueCyr-Roman.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/helvetica-neue/HelveticaNeueCyr-Medium.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/helvetica-neue/HelveticaNeueCyr-Bold.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../fonts/helvetica-neue/HelveticaNeueCyr-Heavy.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/helvetica-neue/HelveticaNeueCyr-LightItalic.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/helvetica-neue/HelveticaNeueCyr-MediumItalic.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../fonts/helvetica-neue/HelveticaNeueCyr-HeavyItalic.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "American Typewriter";
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/american-typewriter/AmericanTypewriterRegular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "American Typewriter Light";
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/american-typewriter/AmericanTypewriterLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "American Typewriter Bold";
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/american-typewriter/AmericanTypewriterBold.ttf") format("truetype");
+}
