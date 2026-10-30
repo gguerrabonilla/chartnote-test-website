@@ -79,6 +79,7 @@
     gsap.set(panel, { x: 0, xPercent: 100, force3D: true });
     if (sidebar) gsap.set(sidebar, { x: 200, force3D: true });
     window.addEventListener("scroll", function () {
+      if (window.__chartnoteDemoOpen) return;
       if (phase === 0 && !busy && window.scrollY > 0) {
         window.scrollTo(0, 0);
         slide(1);
@@ -95,6 +96,7 @@
       }
     }, { passive: true });
     window.addEventListener("wheel", function (event) {
+      if (window.__chartnoteDemoOpen) return;
       if (busy) {
         event.preventDefault();
         return;

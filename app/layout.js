@@ -31,11 +31,13 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="/css/fonts.css" />
         <link rel="stylesheet" href="/mirror.css" />
         <link rel="stylesheet" href="/hub.css" />
+        <link rel="stylesheet" href="/demo-overlay.css" />
       </head>
       <body>
         {children}
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer />
         <script src="/hero-motion.js" defer />
+        <script src="/demo-overlay.js" defer />
         <script src="/hub.js" defer />
       </body>
     </html>

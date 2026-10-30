@@ -1,6 +1,5 @@
 (function () {
   var SIGNUP = "https://chartnote.com/welcome?mode=signup";
-  var LIVE_DEMO = "https://chartnote.com/";
 
   document.querySelectorAll('.cui-dropdown[role="button"]').forEach(function (el) {
     if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "0");
@@ -54,9 +53,8 @@
       el.closest(".mic-button") ||
       /^(Try demo|Try it with a real patient note)$/i.test(text);
     if (opensLiveDemo) {
-      if (href === LIVE_DEMO && el.getAttribute("target") === "_blank") return;
       event.preventDefault();
-      window.open(LIVE_DEMO, "_blank", "noopener,noreferrer");
+      if (typeof window.chartnoteOpenDemo === "function") window.chartnoteOpenDemo();
     }
   });
 
