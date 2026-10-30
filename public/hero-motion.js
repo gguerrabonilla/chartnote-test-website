@@ -73,8 +73,10 @@
     }
   }
 
+  gsap.set(panel, { x: 0, y: 0, xPercent: 0, yPercent: 0 });
+  if (sidebar) gsap.set(sidebar, { x: 0, y: 0, xPercent: 0, yPercent: 0 });
   if (above) {
-    gsap.set(panel, { xPercent: 100, force3D: true });
+    gsap.set(panel, { x: 0, xPercent: 100, force3D: true });
     if (sidebar) gsap.set(sidebar, { x: 200, force3D: true });
     window.addEventListener("scroll", function () {
       if (phase === 0 && !busy && window.scrollY > 0) {
@@ -123,8 +125,8 @@
       }
     }, { passive: false });
   } else {
-    gsap.set(panel, { clearProps: "transform" });
-    if (sidebar) gsap.set(sidebar, { clearProps: "transform" });
+    gsap.set(panel, { x: 0, y: 0, xPercent: 0, yPercent: 0, clearProps: "transform" });
+    if (sidebar) gsap.set(sidebar, { x: 0, y: 0, xPercent: 0, yPercent: 0, clearProps: "transform" });
   }
 
   if (!lines.length) return;
