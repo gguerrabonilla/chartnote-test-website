@@ -61,6 +61,35 @@
   var heroVideo = null;
   var heroVideoReturn = null;
 
+  function heroVideoEmbedUrl(id) {
+    var params = new URLSearchParams();
+    params.set("autoplay", "1");
+    params.set("rel", "0");
+    params.set("modestbranding", "1");
+    params.set("playsinline", "1");
+    params.set("fs", "1");
+    return "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?" + params.toString();
+  }
+
+  function mountHeroIframe(frame, id) {
+    var box = frame.getBoundingClientRect();
+    var width = Math.round(box.width);
+    var height = Math.round(box.height);
+    var iframe = document.createElement("iframe");
+    iframe.title = "Chartnote video";
+    iframe.setAttribute("width", String(width));
+    iframe.setAttribute("height", String(height));
+    iframe.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture; fullscreen");
+    iframe.setAttribute("allowfullscreen", "");
+    iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    iframe.setAttribute("frameborder", "0");
+    frame.insertBefore(iframe, frame.firstChild);
+    // YouTube chooses Auto quality from the iframe viewport at load time.
+    // Commit layout at the final CSS size before assigning src.
+    void iframe.offsetWidth;
+    iframe.src = heroVideoEmbedUrl(id);
+  }
+
   function openHeroVideo(id) {
     if (heroVideo || !id) return;
     heroVideoReturn = document.activeElement;
@@ -70,20 +99,17 @@
     heroVideo.setAttribute("aria-modal", "true");
     heroVideo.setAttribute("aria-label", "Chartnote video");
     heroVideo.innerHTML =
+      '<div class="hub-video-backdrop"></div>' +
       '<div class="hub-video-dialog">' +
-      '<button type="button" class="hub-video-close" aria-label="Close video"><i class="cui-icon close" aria-hidden="true"></i></button>' +
       '<div class="hub-video-frame">' +
-      '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&amp;rel=0" ' +
-      'title="Chartnote video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>' +
+      '<button type="button" class="hub-video-close" aria-label="Close video"><i class="cui-icon close" aria-hidden="true"></i></button>' +
       "</div></div>";
     document.body.appendChild(heroVideo);
     document.body.classList.add("hub-video-open");
     heroVideo.addEventListener("click", function (event) {
-      if (event.target === heroVideo || event.target.closest(".hub-video-close")) closeHeroVideo();
+      if (event.target.closest(".hub-video-backdrop") || event.target.closest(".hub-video-close")) closeHeroVideo();
     });
-    requestAnimationFrame(function () {
-      if (heroVideo) heroVideo.classList.add("is-open");
-    });
+    mountHeroIframe(heroVideo.querySelector(".hub-video-frame"), id);
     heroVideo.querySelector(".hub-video-close").focus();
   }
 
