@@ -58,6 +58,64 @@
     }
   });
 
+  var heroVideo = null;
+  var heroVideoReturn = null;
+
+  function openHeroVideo(id) {
+    if (heroVideo || !id) return;
+    heroVideoReturn = document.activeElement;
+    heroVideo = document.createElement("div");
+    heroVideo.className = "hub-video";
+    heroVideo.setAttribute("role", "dialog");
+    heroVideo.setAttribute("aria-modal", "true");
+    heroVideo.setAttribute("aria-label", "Chartnote video");
+    heroVideo.innerHTML =
+      '<div class="hub-video-dialog">' +
+      '<button type="button" class="hub-video-close" aria-label="Close video"><i class="cui-icon close" aria-hidden="true"></i></button>' +
+      '<div class="hub-video-frame">' +
+      '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&amp;rel=0" ' +
+      'title="Chartnote video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>' +
+      "</div></div>";
+    document.body.appendChild(heroVideo);
+    document.body.classList.add("hub-video-open");
+    heroVideo.addEventListener("click", function (event) {
+      if (event.target === heroVideo || event.target.closest(".hub-video-close")) closeHeroVideo();
+    });
+    requestAnimationFrame(function () {
+      if (heroVideo) heroVideo.classList.add("is-open");
+    });
+    heroVideo.querySelector(".hub-video-close").focus();
+  }
+
+  function closeHeroVideo() {
+    if (!heroVideo) return;
+    var iframe = heroVideo.querySelector("iframe");
+    if (iframe) {
+      iframe.src = "about:blank";
+      iframe.remove();
+    }
+    heroVideo.remove();
+    heroVideo = null;
+    document.body.classList.remove("hub-video-open");
+    if (heroVideoReturn && heroVideoReturn.focus) heroVideoReturn.focus();
+    heroVideoReturn = null;
+  }
+
+  document.querySelectorAll("[data-hub-video]").forEach(function (el) {
+    el.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      openHeroVideo(el.getAttribute("data-hub-video"));
+    });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && heroVideo) closeHeroVideo();
+  });
+
+  window.chartnoteOpenVideo = openHeroVideo;
+  window.chartnoteCloseVideo = closeHeroVideo;
+
   document.querySelectorAll("[data-video-id]").forEach(function (el) {
     el.addEventListener("click", function () {
       openVideo(el.getAttribute("data-video-id"));
