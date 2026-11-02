@@ -313,6 +313,62 @@
     }
     .form-fine a { color: var(--c1); text-decoration: underline; }
 
+    /* Inline scheduler, shown after the form is submitted */
+    .demo-booked {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--navy);
+      background: var(--c4);
+      border: 1px solid var(--c3);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+    #demo-booking,
+    #demo-booked,
+    #calendly-inline { scroll-margin-top: 80px; }
+    #demo-booking-title:focus { outline: none; }
+    #calendly-inline {
+      position: relative;
+      width: 100%;
+      height: 700px;
+      min-width: 0;
+      border-radius: var(--radius);
+      background: var(--n2);
+    }
+    #calendly-inline iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: var(--radius);
+      position: relative;
+      z-index: 1;
+    }
+    #calendly-inline iframe:focus { outline: none; }
+    /* Calendly injects a spinner behind a transparent iframe. Keep it out of the calendar. */
+    #calendly-inline .calendly-spinner { display: none; }
+    .calendly-fallback {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--n4);
+      text-align: center;
+      margin-top: 4px;
+    }
+    .calendly-fallback a {
+      color: var(--c2);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .calendly-fallback a:hover { color: var(--navy); }
+    .calendly-fallback a:focus-visible {
+      outline: 2px solid var(--c1);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    .calendly-fallback a:active { color: var(--c2); }
+
     /* ─── Social Proof / Logo Bar ───────────────────── */
     .logos-section {
       padding: 64px 32px;
@@ -714,6 +770,28 @@
       .nav-links { display: none; }
       .form-row { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
+      .form-card.is-booking { padding: 28px 12px 16px; }
+      #calendly-inline { height: 780px; }
+    }
+    @media (max-width: 480px) {
+      .hero-inner:has(.form-card.is-booking) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .form-card.is-booking {
+        padding: 20px 0 12px;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .form-card.is-booking .form-card-title,
+      .form-card.is-booking .form-card-sub,
+      .form-card.is-booking .demo-booked,
+      .form-card.is-booking .calendly-fallback {
+        margin-left: 16px;
+        margin-right: 16px;
+      }
     }
   </style>
 </head>
@@ -818,7 +896,8 @@
 
       <!-- Right: form -->
       <div class="hero-right">
-        <div class="form-card">
+        <div class="form-card" id="demo-card">
+          <div id="demo-request">
           <h2 class="form-card-title">Request a demo</h2>
           <p class="form-card-sub">We'll reach out within 1 business day to schedule your session.</p>
 
@@ -918,6 +997,18 @@
             <a href="https://chartnote.com/privacyPolicy">Privacy Policy</a>.
             We never sell your data.
           </p>
+          </div>
+
+          <div id="demo-booking" hidden>
+            <h2 class="form-card-title" id="demo-booking-title" tabindex="-1">Pick a time for your demo</h2>
+            <p class="form-card-sub">It's a 20-minute call. Choose a time that works for you.</p>
+            <p id="demo-booked" class="demo-booked" hidden role="status">You're booked. A calendar invite is on its way.</p>
+            <div id="calendly-inline"></div>
+            <p id="calendly-fallback" class="calendly-fallback" hidden>
+              The scheduler didn't load.
+              <a href="https://calendly.com/d/dwgj-dpq-8fq/chartnote-demo">Book your 20-minute demo</a>.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -1094,6 +1185,8 @@
 
       function show() {
         if (shown) return;
+        const card = document.getElementById('demo-card');
+        if (card && card.classList.contains('is-booking')) return;
         shown = true;
         sessionStorage.setItem('ei_shown', '1');
         overlay.classList.add('visible');
@@ -1124,10 +1217,133 @@
     })();
 
     // ── Demo form submission ───────────────────────────
+    const CALENDLY_URL = 'https://calendly.com/d/dwgj-dpq-8fq/chartnote-demo';
+    const CALENDLY_UTM_KEYS = {
+      utm_campaign: 'utmCampaign',
+      utm_source: 'utmSource',
+      utm_medium: 'utmMedium',
+      utm_content: 'utmContent',
+      utm_term: 'utmTerm',
+    };
+
+    function calendlyPrefill(data) {
+      const prefill = {};
+      const name = [data.first_name, data.last_name].filter(Boolean).join(' ');
+      if (name) prefill.name = name;
+      if (data.email) prefill.email = data.email;
+
+      const answers = {};
+      if (data.role) answers.a1 = data.role;
+      if (data.ehr) answers.a2 = data.ehr;
+      if (data.team_size) answers.a3 = data.team_size;
+      if (data.organization) answers.a4 = 'Organization: ' + data.organization;
+      if (Object.keys(answers).length) prefill.customAnswers = answers;
+      return prefill;
+    }
+
+    function calendlyUtm() {
+      const utm = {};
+      const extra = new URLSearchParams();
+      const params = new URLSearchParams(window.location.search);
+      params.forEach((value, key) => {
+        if (!value || !key.toLowerCase().startsWith('utm_')) return;
+        const mapped = CALENDLY_UTM_KEYS[key.toLowerCase()];
+        if (mapped) utm[mapped] = value;
+        else extra.append(key, value);
+      });
+      return { utm, extra };
+    }
+
+    function calendlyFallbackUrl(data) {
+      const url = new URL(CALENDLY_URL);
+      const prefill = calendlyPrefill(data);
+      if (prefill.name) url.searchParams.set('name', prefill.name);
+      if (prefill.email) url.searchParams.set('email', prefill.email);
+      if (prefill.customAnswers) {
+        Object.entries(prefill.customAnswers).forEach(([key, value]) => {
+          url.searchParams.set(key, value);
+        });
+      }
+      const { utm, extra } = calendlyUtm();
+      Object.entries(CALENDLY_UTM_KEYS).forEach(([queryKey, optionKey]) => {
+        if (utm[optionKey]) url.searchParams.set(queryKey, utm[optionKey]);
+      });
+      extra.forEach((value, key) => url.searchParams.set(key, value));
+      return url.toString();
+    }
+
+    function loadCalendlyWidget() {
+      if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
+        return Promise.resolve();
+      }
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('Calendly failed to load'));
+        document.head.appendChild(script);
+      });
+    }
+
+    function onCalendlyScheduled(event) {
+      if (event.origin !== 'https://calendly.com') return;
+      let message = event.data;
+      if (typeof message === 'string') {
+        try { message = JSON.parse(message); } catch (err) { return; }
+      }
+      if (!message || message.event !== 'calendly.event_scheduled') return;
+      const note = document.getElementById('demo-booked');
+      if (!note || !note.hidden) return;
+      note.hidden = false;
+      note.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    let schedulerShown = false;
+    function showDemoScheduler(data) {
+      if (schedulerShown) return;
+      schedulerShown = true;
+
+      document.getElementById('demo-request').hidden = true;
+      const booking = document.getElementById('demo-booking');
+      booking.hidden = false;
+      document.getElementById('demo-card').classList.add('is-booking');
+      document.getElementById('ei-overlay').classList.remove('visible');
+
+      const fallbackLink = document.querySelector('#calendly-fallback a');
+      if (fallbackLink) fallbackLink.href = calendlyFallbackUrl(data);
+
+      const heading = document.getElementById('demo-booking-title');
+      heading.focus({ preventScroll: true });
+      booking.scrollIntoView({ block: 'start', behavior: 'smooth' });
+
+      window.addEventListener('message', onCalendlyScheduled);
+
+      const inline = document.getElementById('calendly-inline');
+      loadCalendlyWidget().then(() => {
+        const { utm, extra } = calendlyUtm();
+        const options = {
+          url: CALENDLY_URL,
+          parentElement: inline,
+        };
+        const prefill = calendlyPrefill(data);
+        if (Object.keys(prefill).length) options.prefill = prefill;
+        if (Object.keys(utm).length) options.utm = utm;
+        if ([...extra.keys()].length) {
+          const url = new URL(options.url);
+          extra.forEach((value, key) => url.searchParams.set(key, value));
+          options.url = url.toString();
+        }
+        window.Calendly.initInlineWidget(options);
+      }).catch(() => {
+        inline.hidden = true;
+        document.getElementById('calendly-fallback').hidden = false;
+      });
+    }
+
     document.getElementById('demo-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = this.querySelector('.form-submit');
-      const original = btn.textContent;
 
       btn.textContent = 'Sending…';
       btn.disabled = true;
@@ -1147,13 +1363,11 @@
           method: 'POST',
           body: JSON.stringify(data),
         });
-        btn.textContent = 'Submitted! We\'ll be in touch.';
-        btn.style.background = '#4C6CBF';
       } catch (err) {
-        btn.textContent = original;
-        btn.disabled = false;
-        alert('Something went wrong. Please try again or email us directly.');
+        // Lead capture failed. The visitor can still book a time.
       }
+
+      showDemoScheduler(data);
     });
   </script>
 
