@@ -1,6 +1,12 @@
+import { noindexHeaderRules } from "./lib/search-hosts.mjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  // Host-conditional so chartnote.com stays indexable if this build is served there.
+  async headers() {
+    return noindexHeaderRules();
+  },
   async rewrites() {
     return {
       beforeFiles: [
